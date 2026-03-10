@@ -77,7 +77,7 @@ export const generateBlogTitle = async (req, res)=>{
             },
             ],
             temperature: 0.7,
-            max_tokens: 100,
+            max_tokens: 1000,
         });
 
         const content = response.choices[0].message.content
@@ -135,7 +135,7 @@ export const generateImage = async (req, res)=>{
 export const removeImageBackground = async (req, res)=>{
     try{
         const {userId} = req.auth();
-        const {image} = req.file;
+        const image = req.file;
         const plan = req.plan;
 
         if(plan !== "premium"){
@@ -164,7 +164,7 @@ export const removeImageBackground = async (req, res)=>{
 export const removeImageObject = async (req, res)=>{
     try{
         const {userId} = req.auth();
-        const {image} = req.file;
+        const image = req.file;
         const plan = req.plan;
         const {object} = req.body;
 
